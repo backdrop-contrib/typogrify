@@ -1,8 +1,7 @@
 <?php
-
 /**
  * @file
- * Typogrify: Brings typographical refinemnts to drupal
+ * Typogrify: Brings typographical refinemnts to Backdrop CMS.
  *
  * Hook together all the typogrify components.
  */
@@ -107,7 +106,7 @@ function _typogrify_unquote($_) {
  * Implements hook_init().
  */
 function typogrify_init() {
-  drupal_add_css(drupal_get_path('module', 'typogrify') . '/typogrify.css');
+  backdrop_add_css(backdrop_get_path('module', 'typogrify') . '/typogrify.css');
 }
 
 /**
@@ -246,7 +245,7 @@ function _typogrify_process($text, $filter, $format, $langcode, $cache, $cache_i
  * @return array
  *   Form API array containing our settings form.
  */
-function _typogrify_settings($form, &$form_state, $filter, $format, $defaults, $filters) {
+function _typogrify_settings($form, &$form_state, $filter, $format) {
   module_load_include('class.php', 'typogrify');
   module_load_include('php', 'typogrify', 'unicode-conversion');
   module_load_include('php', 'typogrify', 'smartypants');

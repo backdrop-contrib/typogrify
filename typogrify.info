@@ -1,7 +1,11 @@
+type = module
 name = Typogrify
 description = Adds typographic refinements.
-package = "Input filters"
-core = 7.x
-files[] = typogrify.class.php
+package = Input filters
+backdrop = 1.x
+
+// @todo convert tests.
 files[] = tests/typogrify-smartypants.test
 files[] = tests/typogrify.class.test
+
+
