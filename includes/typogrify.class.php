@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file typogrify.class.php
  * Defines a class for providing different typographical tweaks to HTML
@@ -29,8 +28,8 @@ class Typogrify {
    * @return string
    */
   public static function dash($text) {
-      $dash_finder = "/(\s|&nbsp;|&thinsp;)*(&mdash;|&ndash;|&#x2013;|&#8211;|&#x2014;|&#8212;)(\s|&nbsp;|&thinsp;)*/";
-      return preg_replace($dash_finder, '&thinsp;\\2&thinsp;', $text);
+    $dash_finder = "/(\s|&nbsp;|&thinsp;)*(&mdash;|&ndash;|&#x2013;|&#8211;|&#x2014;|&#8212;)(\s|&nbsp;|&thinsp;)*/";
+    return preg_replace($dash_finder, '&thinsp;\\2&thinsp;', $text);
   }
 
   /**
@@ -73,16 +72,16 @@ class Typogrify {
     $in_skipped_tag = false;
 
     $cap_finder = "/(
-            (\b[[\p{Lu}=\d]*       # Group 2: Any amount of caps and digits
-            [[\p{Lu}][[\p{Lu}\d]*  # A cap string much at least include two caps (but they can have digits between them)
-            (?:&amp;)?             # allowing ampersand in caps.
-            [[\p{Lu}'\d]*[[\p{Lu}\d]) # Any amount of caps and digits
-            | (\b[[\p{Lu}]+\.\s?   # OR: Group 3: Some caps, followed by a '.' and an optional space
-            (?:[[\p{Lu}]+\.\s?)+)  # Followed by the same thing at least once more
-            (\s|\b|$|[)}\]>]))/xu";
+      (\b[[\p{Lu}=\d]*       # Group 2: Any amount of caps and digits
+      [[\p{Lu}][[\p{Lu}\d]*  # A cap string much at least include two caps (but they can have digits between them)
+      (?:&amp;)?             # allowing ampersand in caps.
+      [[\p{Lu}'\d]*[[\p{Lu}\d]) # Any amount of caps and digits
+      | (\b[[\p{Lu}]+\.\s?   # OR: Group 3: Some caps, followed by a '.' and an optional space
+      (?:[[\p{Lu}]+\.\s?)+)  # Followed by the same thing at least once more
+      (\s|\b|$|[)}\]>]))/xu";
 
     foreach ($tokens as $token) {
-      if ( $token[0] == "tag" ) {
+      if ($token[0] == "tag") {
         // Don't mess with tags.
         $result[] = $token[1];
         $close_match = preg_match(SMARTYPANTS_TAGS_TO_SKIP, $token[1]);

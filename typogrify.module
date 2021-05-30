@@ -45,7 +45,7 @@ function typogrify_filter_info() {
  */
 function _typogrify_filter_tips($filter, $format, $long) {
   if ($long) {
-    module_load_include('php', 'typogrify', 'unicode-conversion');
+    module_load_include('php', 'typogrify', 'includes/unicode-conversion');
 
     $output = t('Typogrify.module brings the typographic refinements of Typogrify to Drupal.');
     $output .= '<ul>';
@@ -106,7 +106,7 @@ function _typogrify_unquote($_) {
  * Implements hook_init().
  */
 function typogrify_init() {
-  backdrop_add_css(backdrop_get_path('module', 'typogrify') . '/typogrify.css');
+  backdrop_add_css(backdrop_get_path('module', 'typogrify') . '/css/typogrify.css');
 }
 
 /**
@@ -129,15 +129,16 @@ function _typogrify_process($text, $filter, $format, $langcode, $cache, $cache_i
   $ctx = array();
   if ($langcode == 'und') {
     global $language;
-    $ctx['langcode'] = $language->language;
+    $ctx['langcode'] = $language->langcode;
   }
   else {
     $ctx['langcode'] = $langcode;
   }
+
   // Load Helpers.
-  module_load_include('class.php', 'typogrify');
-  module_load_include('php', 'typogrify', 'unicode-conversion');
-  module_load_include('php', 'typogrify', 'smartypants');
+  module_load_include('php', 'typogrify', 'includes/typogrify.class');
+  module_load_include('php', 'typogrify', 'includes/unicode-conversion');
+  module_load_include('php', 'typogrify', 'includes/smartypants');
 
   // Build a list of ligatures to convert.
   foreach (unicode_conversion_map('ligature') as $ascii => $unicode) {
@@ -246,9 +247,9 @@ function _typogrify_process($text, $filter, $format, $langcode, $cache, $cache_i
  *   Form API array containing our settings form.
  */
 function _typogrify_settings($form, &$form_state, $filter, $format) {
-  module_load_include('class.php', 'typogrify');
-  module_load_include('php', 'typogrify', 'unicode-conversion');
-  module_load_include('php', 'typogrify', 'smartypants');
+  module_load_include('php', 'typogrify', 'includes/typogrify.class');
+  module_load_include('php', 'typogrify', 'includes/unicode-conversion');
+  module_load_include('php', 'typogrify', 'includes/smartypants');
 
   // Add our default settings to the array if they are not present.
   $filter->settings += array(
