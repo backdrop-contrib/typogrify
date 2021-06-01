@@ -77,6 +77,7 @@ Credits
 -------
 
 - Ported to Backdrop CMS by [Jen Lampton](https://github.com/jenlampton).
+- Backdrop port sponsored by [Ivar Jacobson International](https://www.ivarjacobson.com)
 - Maintained for Drupal by [many wonderful contributors](https://www.drupal.org/node/149970/committers).
 - Originally written for Drupal by [Derek Wright](https://www.drupal.org/u/dww).
 - The original Typogrify is Python code by [Christian Metts](https://github.com/mintchaos).
